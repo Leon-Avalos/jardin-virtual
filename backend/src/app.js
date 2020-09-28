@@ -1,7 +1,13 @@
-import express from 'express'
-
+import express, { json } from 'express'
+import IndexRoutes from './routes/index.routes'
+import PlantsRoutes from './routes/plants.routes'
 const app = express()
 
-app.get('/', (req, res) => res.send('Working'))
+// Configuraciones
+app.set('port', process.env.PORT || 3000)
+app.use(json())
+app.use(IndexRoutes)
+app.use(PlantsRoutes)
+// Rutas
 
 export default app
