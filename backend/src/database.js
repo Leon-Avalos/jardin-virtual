@@ -13,7 +13,7 @@ const dbName = 'garden'
 
 export async function connect(){
     try {
-        const client = await MongoClient.connect(uri, {useNewUrlParser: true})
+        const client = await MongoClient.connect(uri, {useNewUrlParser: true, useUnifiedTopology: true})
         const db = client.db(dbName)
         if(db){
             console.log("That's a bingo!")
