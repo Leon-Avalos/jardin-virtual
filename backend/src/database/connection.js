@@ -11,16 +11,16 @@ const dbName = 'garden'
  * @returns The estabilished connection to de database 
  */
 
-export async function connect(){
+export async function connect() {
     try {
-        const client = await MongoClient.connect(uri, {useNewUrlParser: true, useUnifiedTopology: true})
+        const client = await MongoClient.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
         const db = client.db(dbName)
-        if(db){
+        if (db) {
             console.log("That's a bingo!")
         }
         return db
-    }catch(e) {
+    } catch (e) {
         console.log("Error:", e)
     }
-    
+
 }

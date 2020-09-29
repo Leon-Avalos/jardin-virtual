@@ -3,9 +3,14 @@ import { connect } from '../database/connection'
 class PlantController {
 
     async list() {
-        const db = await connect()
-        const result = await db.collection('plants').find({}).toArray()
-        return result
+        try {
+            const db = await connect()
+            const result = await db.collection('plants').find({}).toArray()
+            return result
+        } catch (e) {
+            return e
+        }
+
     }
 
     static async createPlant(plant) {
@@ -13,7 +18,7 @@ class PlantController {
             const db = await connect()
             const result = await db.collection('plants').insertOne(plant)
             return result
-        }catch(e){
+        } catch (e) {
             return e
         }
     }

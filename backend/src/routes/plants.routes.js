@@ -18,7 +18,7 @@ router.post('/createPlants', async (req, res) => {
         img_url: req.body.img_url
     }
     const result = await new PlantController.createPlant(plant)
-    
-    res.json({"data" : result})
+
+    res.json({ "data": result })
 })
 export default router
