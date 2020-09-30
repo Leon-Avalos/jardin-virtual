@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jardin Virtual</title>
+</head>
+<!-- Nuestra simple APP de ejemplo -->
+<div id="app">
+    <h1>Listado de Precio de Bitcoin</h1>
+    <div v-for="currency in info" class="currency">
+        {{ currency.description }}:
+        <span class="lighten">
+            <span v-html="currency.symbol"></span>{{ currency.rate_float | currencydecimal }}
+        </span>
+    </div>
+</div>
+<!-- Cargamos las referencias a VUE y AXIOS desde CDN-->
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+<!-- Cargamos los ficheros que simular nuestro API y nuestra App en Vue.JS -->
+<script type="text/javascript" src="./index.js"></script>
+</body>
+
+</html>
