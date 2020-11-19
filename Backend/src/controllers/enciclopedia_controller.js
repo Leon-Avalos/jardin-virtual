@@ -22,6 +22,17 @@ class enciclopediaController {
         const enciclopedia = await Enciclopedia.find().sort({date: 'desc'}).lean();
         return enciclopedia;
     }
+
+    static async search(title){
+        try{
+            const info = title.title;
+            console.log('esta es info: ' +info);
+            const enciclopedia = await Enciclopedia.find({"title": {'$regex': info }}).lean();
+            return enciclopedia;
+        }catch(e){
+            return e
+        }        
+    }
 }
 
 module.exports = enciclopediaController;

@@ -12,6 +12,19 @@ router.get('/enciclopedia/listInfo', async (req, res) => {
     res.render('enciclopedia_list', {enciclopedia})
 })
 
+//Rutas para buscar
+router.get('/enciclopedia/search', async (req, res) =>{
+    res.render('enciclopedia_search');
+})
+
+router.post('/enciclopedia/search', async (req, res) =>{
+    const title = req.body
+    console.log(title);
+    const enciclopedia = await enciclopediaController.search(title)
+    console.log(enciclopedia);
+    res.render('enciclopedia_search', {enciclopedia});
+})
+
 //Rutas para agregar 
 router.get('/enciclopedia/add', async (req, res) => {
     res.render('enciclopedia_add');
@@ -49,7 +62,7 @@ router.post('/enciclopedia/new-info', async (req, res) => {
         const result = await enciclopediaController.createInfo(info);
         console.log(result);
         //res.send(result);
-    res.redirect('/enciclopedia/listInfo');
+        res.redirect('/enciclopedia/listInfo');
     }
     
 })
